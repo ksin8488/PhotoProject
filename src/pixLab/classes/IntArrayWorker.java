@@ -99,5 +99,46 @@ public class IntArrayWorker
       }
     }
   }
+  
+  /**
+   * How many of a specific number is in the data structure
+   */
+  public void getCount()
+  {
+	  
+  }
+  
+  public int getLargest()
+  {
+	  int largest = Integer.MIN_VALUE;	//start with the smallest possible number because "largest" can be a negative number
+	  
+	  for(int row = 0; row < matrix.length; row++)
+	  {
+		  for(int col = 0; col < matrix[0].length; col++)
+		  {
+			  if(matrix[row][col] > largest)
+			  {
+				  largest = matrix[row][col];
+			  }  
+		  }
+	  }
+	  
+	  return largest;
+  }
+  
+//  public int getColTotal()
+//  {  
+//	  for(int row = 0; row < matrix.length; row++)
+//	  {
+//		  int count = 0;
+//		  
+//		  for(int col = 0; col < matrix[0].length; col++)
+//		  {
+//			 count += 1;
+//		  }
+//		  
+//		  return count;
+//	  }
+//  }
  
 }
