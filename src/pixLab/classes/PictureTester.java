@@ -18,6 +18,14 @@ public class PictureTester
     beach.explore();
   }
   
+  public static void testMarioFilter()
+  {
+	  Picture sample = new Picture("beach.jpg");
+	  sample.explore();
+	  sample.marioFilter(sample.getHeight()/2, sample.getWidth()/2);
+	  sample.explore();
+  }
+  
   /** Method to test mirrorVertical */
   public static void testMirrorVertical()
   {
@@ -63,6 +71,7 @@ public class PictureTester
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
+    testMarioFilter();
     //testNegate();
     //testGrayscale();
     //testFixUnderwater();

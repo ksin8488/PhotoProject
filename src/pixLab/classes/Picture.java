@@ -179,7 +179,26 @@ public class Picture extends SimplePicture
  {
 	 Pixel fromPixel = null;
 	 Pixel toPixel = null;
-	 Picture coffee = new Picture("marioFilter.png");
+	 Picture mario = new Picture("marioFilter.png");
+	 Pixel [][] toPixels = this.getPixels2D();	//The base layer of the picture
+	 Pixel [][] fromPixels = mario.getPixels2D();	//The layer we are adding to the picture
+	 int fromRow = 0;
+	 for(int toRow = startRow; fromRow < fromPixels.length && toRow < toPixels.length; toRow++)	//using the loop from the copy method to keep things in bounds
+	 {
+		 int fromCol = 0;
+		 for(int toCol = startCol; fromCol < fromPixels[0].length && toCol < toPixels[0].length; toCol++)
+		 {
+			 fromPixel = fromPixels[fromRow][fromCol];
+			 int transparentLevel = fromPixel.getAlpha();
+			 toPixel = toPixels[toRow][toCol];
+			 if(!fromPixel.isTransparent()) //copies the picture if it's not transparent
+			 {
+				 toPixel.setColor(fromPixel.getColor());
+			 }
+			 fromCol++;
+		 }
+		 fromRow++;
+	 }
  }
   
   
