@@ -103,10 +103,10 @@ public class IntArrayWorker
   /**
    * How many of a specific number is in the data structure
    */
-  public void getCount()
-  {
-	  
-  }
+//  public void getCount()
+//  {
+//	  
+//  }
   
   public int getLargest()
   {

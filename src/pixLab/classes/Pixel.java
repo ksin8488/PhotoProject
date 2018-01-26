@@ -353,6 +353,22 @@ public class Pixel
    return average;
  }
   
+ /**
+  * Helper method that checks to see if the image is transparent
+  * @return true or false on if the image is transparent
+  */
+ public boolean isTransparent()
+ {
+	 boolean isTransparent = false;
+	 
+	 if(getAlpha() == 255 && getRed() == 0 && getGreen() == 0 && getBlue() == 0)
+	 {
+		 isTransparent = true;
+	 }
+	 
+	 return isTransparent;
+ }
+ 
   /**
    * Method to return a string with information about this pixel
    * @return a string with information about this pixel

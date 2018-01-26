@@ -110,10 +110,10 @@ public class Picture extends SimplePicture
     int width = pixels[0].length;
     for (int row = 0; row < pixels.length; row++)
     {
-      for (int col = 0; col < width / 2; col++)
+      for (int col = 0; col < width / 2; col++)	//loops over half of the pixels
       {
         leftPixel = pixels[row][col];
-        rightPixel = pixels[row][width - 1 - col];
+        rightPixel = pixels[row][width - 1 - col];	//math to match the pixels
         rightPixel.setColor(leftPixel.getColor());
       }
     } 
@@ -174,6 +174,15 @@ public class Picture extends SimplePicture
     }   
   }
 
+  
+ public void marioFilter(int startRow, int startCol)
+ {
+	 Pixel fromPixel = null;
+	 Pixel toPixel = null;
+	 Picture coffee = new Picture("marioFilter.png");
+ }
+  
+  
   /** Method to create a collage of several pictures */
   public void createCollage()
   {
