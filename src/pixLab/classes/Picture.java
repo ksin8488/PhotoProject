@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import java.text.*;
 import java.util.*;
 import java.util.List; // resolves problem with java.awt.List and java.util.List
+import java.util.Random;
 
 /**
  * A class that represents a picture.  This class inherits from 
@@ -201,7 +202,31 @@ public class Picture extends SimplePicture
 	 }
  }
   
-  
+//  public void glitchPic(int startRow, int startCol)
+//  {
+//	  Picture beach = new Picture("beach.jpg");
+//	  Pixel [][] origionalPixels = beach.getPixels2D();
+//	  Pixel [][] glitchedPixels = null;		//will contain the new glitched picture
+//	  
+// 	  //Full Picture Section - wrap around vertical axis 20%-40%
+//	  Random generator = new Random();		//to be able to use the random features
+//	  
+//		int verticalAxis = generator.nextInt((origionalPixels.length * 80) - (origionalPixels.length * 60)) + 1;	//gets a 20-40% random number from the amount of pixels
+//		int shiftAmount = verticalAxis;
+//	  
+//	  for(int origionalRow = 0; origionalRow < origionalPixels.length; origionalRow++)
+//	  {
+//		  for(int origionalCol = 0; origionalCol < origionalPixels[0].length; origionalCol++)
+//		  {
+//			while (shiftAmount > 0)
+//			{
+//				
+//			}
+//		  }
+//	  }
+// }
+ 
+ 
   /** Method to create a collage of several pictures */
   public void createCollage()
   {
