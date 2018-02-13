@@ -201,34 +201,10 @@ public class Picture extends SimplePicture
 		 fromRow++;
 	 }
  }
-  
-//  public void glitchPic(int startRow, int startCol)
-//  {
-//	  Picture beach = new Picture("beach.jpg");
-//	  Pixel [][] origionalPixels = beach.getPixels2D();
-//	  Pixel [][] glitchedPixels = null;		//will contain the new glitched picture
-//	  
-// 	  //Full Picture Section - wrap around vertical axis 20%-40%
-//	  Random generator = new Random();		//to be able to use the random features
-//	  
-//		int verticalAxis = generator.nextInt((origionalPixels.length * 80) - (origionalPixels.length * 60)) + 1;	//gets a 20-40% random number from the amount of pixels
-//		int shiftAmount = verticalAxis;
-//	  
-//	  for(int origionalRow = 0; origionalRow < origionalPixels.length; origionalRow++)
-//	  {
-//		  for(int origionalCol = 0; origionalCol < origionalPixels[0].length; origionalCol++)
-//		  {
-//			while (shiftAmount > 0)
-//			{
-//				
-//			}
-//		  }
-//	  }
-// }
  
  public void glitchArt()
  {
-	 //1st section - teacher code
+	 //1st section - teacher code - shifts the image around the vertical axis
 	 Pixel [][] pixels = this.getPixels2D();
 	 int shiftAmount = (int) (.33 * pixels[0].length);
 	 int width = pixels[0].length;
@@ -248,21 +224,44 @@ public class Picture extends SimplePicture
 		 }
 	 }
 	 
-	 //2nd section - my code
-	 int cutRow = 10;
-	 int cutCol = 50;
+	 //2nd section - my code - copy red and blue values
 	 
-	 Pixel pixelObj = new Pixel(this, cutRow, cutCol); //Not working at the moment
-	 
-	 for (int row = 100; row < pixels.length; row++)
+	 for (int row = 300; row < pixels.length; row++)
 	 {
-		 for(int col = 0; col < pixels[row].length; col++)
+		 for(int col = 300; col < pixels[0].length; col++)
 		 {
-			 pixelObj.setGreen(0);
+			int randomRed = pixels[row][col].getRed();
+			int randomBlue = pixels[row][col].getBlue();
+			 
+			 pixels[row-100][col-100].setRed(randomRed);
+			 pixels[row-100][col-100].setBlue(randomBlue);
 		 }
 	 }
 	 
-	 //3rd Section - PM Class assignment
+	 //3rd section - my code - add 2-4 (20 x 20 min) rectangles of randomly colored pixels
+	 
+
+	 int rectangleAmount = 5;
+	 while(rectangleAmount > 0)
+	 {
+		 int randomRow = (int) (Math.random() * (pixels.length - 20));
+		 int randomCol = (int) (Math.random() * (pixels.length - 20));
+		 int randomRed = (int)(Math.random() * 256);
+		 int randomGreen = (int)(Math.random() * 256);
+		 int randomBlue = (int)(Math.random() * 256);
+		 
+		 for(int row = randomRow; row < randomRow + 20; row++)
+			 for(int col = randomCol; col < randomCol + 20; col++)
+			 {
+				 pixels[row][col].setRed(randomRed);
+				 pixels[row][col].setGreen(randomGreen);
+				 pixels[row][col].setBlue(randomBlue);
+			 }
+		 rectangleAmount--;
+	 }
+
+	 
+	 //4th Section - PM Class assignment
 	 
 	 double distance = 0;
 	 
