@@ -8,6 +8,7 @@ import java.util.*;
 import java.util.List; // resolves problem with java.awt.List and java.util.List
 import java.util.Random;
 
+
 /**
  * A class that represents a picture.  This class inherits from 
  * SimplePicture and allows the student to add functionality to
@@ -258,24 +259,41 @@ public class Picture extends SimplePicture
 				 pixels[row][col].setBlue(randomBlue);
 			 }
 		 rectangleAmount--;
-	 }
-
-	 
-	 //4th Section - PM Class assignment
-	 
-	 double distance = 0;
-	 
-	 for (int row = 0; row < pixels.length; row++)
-	 {
-		 for (int col = 0; col < pixels[0].length; col++)
-		 {
-			 //pixels.colorDistance(Color.orange);
-		 }
-	 }
-	 //any 100 variation in green or blue will be detected by an if statement
-	 
+	 } 
  }
  
+ /**
+  * Method designed to alter the image according to the Class Filter assignment
+  */
+ public void classFilter()
+ {
+	//4th Section - PM Class assignment
+	 
+		 double distance = 0;
+		 Pixel [][] pixels = this.getPixels2D();
+		 Picture bobRoss = new Picture("BobRoss.png");
+		 Pixel [][] bobRossPixel = bobRoss.getPixels2D();
+		 
+		 for (int row = 0; row < pixels.length; row++)
+		 {
+			 for (int col = 0; col < pixels[0].length; col++)
+			 {
+				 if(pixels[row][col].colorDistance(Color.orange) < 180 && bobRossPixel[row][col].getColor() != null)
+				 {
+					 for(int bobRow = 0; bobRow < bobRossPixel.length; bobRow++)
+					 {
+						 for(int bobCol = 0; bobCol < bobRossPixel[0].length; bobCol++)
+						 {
+							 pixels[row][col].setColor(bobRossPixel[row][col].getColor());
+						 }
+					 }
+					 
+				 }
+				 
+			 }
+		 }
+		 //any 100 variation in green or blue will be detected by an if statement
+ }
  
   /** Method to create a collage of several pictures */
   public void createCollage()
@@ -330,6 +348,7 @@ public class Picture extends SimplePicture
     Picture beach = new Picture("beach.jpg");
     beach.explore();
     beach.glitchArt();
+    beach.classFilter();
    // beach.zeroBlue();
     beach.explore();
     
