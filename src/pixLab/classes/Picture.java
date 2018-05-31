@@ -274,24 +274,44 @@ public class Picture extends SimplePicture
 		 Picture bobRoss = new Picture("BobRoss.png");
 		 Pixel [][] bobRossPixel = bobRoss.getPixels2D();
 		 
-		 for (int row = 0; row < pixels.length; row++)
+//		 for (int row = 0; row < pixels.length; row++)
+//		 {
+//			 for (int col = 0; col < pixels[0].length; col++)
+//			 {
+//				 if(pixels[row][col].colorDistance(Color.orange) < 180)
+//				 {
+//					 for(int bobRow = 0; bobRow < bobRossPixel.length; bobRow++)
+//					 {
+//						 for(int bobCol = 0; bobCol < bobRossPixel[0].length; bobCol++)
+//						 {
+//							 pixels[row][col].setColor(bobRossPixel[bobRow][bobCol].getColor());
+//						 }
+//					 }
+//					 
+//				 }
+//				 
+//			 }
+//		 }
+		 
+		 
+		 for(int bobRow = 0; bobRow < bobRossPixel.length; bobRow++)
 		 {
-			 for (int col = 0; col < pixels[0].length; col++)
+			 for(int bobCol = 0; bobCol < bobRossPixel[0].length; bobCol++)
 			 {
-				 if(pixels[row][col].colorDistance(Color.orange) < 180 && bobRossPixel[row][col].getColor() != null)
+				 for (int row = 0; row < pixels.length; row++)
 				 {
-					 for(int bobRow = 0; bobRow < bobRossPixel.length; bobRow++)
+					 for (int col = 0; col < pixels[0].length; col++)
 					 {
-						 for(int bobCol = 0; bobCol < bobRossPixel[0].length; bobCol++)
+						 if(pixels[row][col].colorDistance(Color.orange) < 180)
 						 {
-							 pixels[row][col].setColor(bobRossPixel[row][col].getColor());
+							 pixels[row][col].setColor(bobRossPixel[bobRow][bobCol].getColor());
 						 }
 					 }
-					 
 				 }
 				 
 			 }
 		 }
+		 
 		 //any 100 variation in green or blue will be detected by an if statement
  }
  
