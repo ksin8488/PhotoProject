@@ -268,30 +268,47 @@ public class Picture extends SimplePicture
  public void classFilter()
  {
 	//4th Section - PM Class assignment
-	 
-		 double distance = 0;
-		 Pixel [][] pixels = this.getPixels2D();
+	 	Pixel [][] pixels = this.getPixels2D();
+	 	int width = pixels[0].length;
+	 	int shiftSize = (int)(.80 * pixels[0].length);
+		double distance = 0;
+		
+		for(int row = 0; row < pixels.length; row++)
+		{
+			Color [] currentColors = new Color[pixels[0].length];
+			
+			for (int col = 0; col < pixels[row].length; col++)
+			{
+				currentColors[col] = pixels[row][col].getColor();
+			}
+			
+			for(int col = 0; col < pixels[0].length; col++)
+			{
+				pixels[row][col].setColor(currentColors[(col + shiftSize) % width]);
+			}
+		}
+		 
 		 Picture bobRoss = new Picture("BobRoss.png");
 		 Pixel [][] bobRossPixel = bobRoss.getPixels2D();
 		 
-		 for (int row = 0; row < pixels.length; row++)
-		 {
-			 for (int col = 0; col < pixels[0].length; col++)
-			 {
-				 if(pixels[row][col].colorDistance(Color.orange) < 180 && bobRossPixel[row][col].getColor() != null)
-				 {
-					 for(int bobRow = 0; bobRow < bobRossPixel.length; bobRow++)
-					 {
-						 for(int bobCol = 0; bobCol < bobRossPixel[0].length; bobCol++)
-						 {
-							 pixels[row][col].setColor(bobRossPixel[row][col].getColor());
-						 }
-					 }
-					 
-				 }
-				 
-			 }
-		 }
+//		 for (int row = 0; row < pixels.length; row++)
+//		 {
+//			 for (int col = 0; col < pixels[0].length; col++)
+//			 {
+//				 if(pixels[row][col].colorDistance(Color.orange) < 180 && bobRossPixel[row][col].getColor() != null)
+//				 {
+//					 for(int bobRow = 0; bobRow < bobRossPixel.length; bobRow++)
+//					 {
+//						 for(int bobCol = 0; bobCol < bobRossPixel[0].length; bobCol++)
+//						 {
+//							 pixels[row][col].setColor(bobRossPixel[row][col].getColor());
+//						 }
+//					 }
+//					 
+//				 }
+//				 
+//			 }
+//		 }
 		 //any 100 variation in green or blue will be detected by an if statement
  }
  
@@ -347,7 +364,7 @@ public class Picture extends SimplePicture
   {
     Picture beach = new Picture("beach.jpg");
     beach.explore();
-    beach.glitchArt();
+   // beach.glitchArt();
     beach.classFilter();
    // beach.zeroBlue();
     beach.explore();
