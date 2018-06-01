@@ -295,20 +295,46 @@ public class Picture extends SimplePicture
 //		 {
 //			 for (int col = 0; col < pixels[0].length; col++)
 //			 {
+
 //				 if(pixels[row][col].colorDistance(Color.orange) < 180 && bobRossPixel[row][col].getColor() != null)
+
+//				 if(pixels[row][col].colorDistance(Color.orange) < 180)
 //				 {
 //					 for(int bobRow = 0; bobRow < bobRossPixel.length; bobRow++)
 //					 {
 //						 for(int bobCol = 0; bobCol < bobRossPixel[0].length; bobCol++)
 //						 {
+
 //							 pixels[row][col].setColor(bobRossPixel[row][col].getColor());
+
+//							 pixels[row][col].setColor(bobRossPixel[bobRow][bobCol].getColor());
 //						 }
 //					 }
 //					 
 //				 }
 //				 
 //			 }
-//		 }
+//		 } 
+		 
+		 for(int bobRow = 0; bobRow < bobRossPixel.length; bobRow++)
+		 {
+			 for(int bobCol = 0; bobCol < bobRossPixel[0].length; bobCol++)
+			 {
+				 for (int row = 0; row < pixels.length; row++)
+				 {
+					 for (int col = 0; col < pixels[0].length; col++)
+					 {
+						 if(pixels[row][col].colorDistance(Color.orange) < 180)
+						 {
+							 pixels[row][col].setColor(bobRossPixel[bobRow][bobCol].getColor());
+						 }
+					 }
+				 }
+				 
+			 }
+		 }
+		 
+>>>>>>> b7e6ed17cc4aea5df780acefae6a05713192c043
 		 //any 100 variation in green or blue will be detected by an if statement
  }
  
